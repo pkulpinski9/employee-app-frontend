@@ -3,85 +3,40 @@
 @section('main-content')
     <div class="container-fluid" style="width: 100%">
         <header class="d-flex justify-content-center py-3 bg-dark">
-            <h2 class="text-white">Panel Admina</h2>
+            <h2 class="text-white">Dodaj pracownika</h2>
         </header>
     </div>
-
-    <div class="container-sm pt-4">
-        <form method="GET" action="/dashboard/find" style="display: inline;">
-            @method('GET')
+    <div class="container-lg" style="padding-top: 15px">
+        <form method="POST" action="/dashboard/addEmployee">
+            @method('POST')
             @csrf
-            <input class="input-group-lg" type="text" class="form-control" name="search_input"
-                   placeholder="Wpisz dane..." required>
-            <button class="btn btn-outline-secondary" type="sumbit">Szukaj</button>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Imię</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Numer telefonu</label>
+                <input type="number" name="phone" class="form-control" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Pensja</label>
+                <input type="number" name="salary" class="form-control" required>
+            </div>
+            <label>Gender</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" value="M" required>
+                <label class="form-check-label" for="inlineRadio1">Mężczyzna</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" value="F" required>
+                <label class="form-check-label" for="inlineRadio2">Inne</label>
+            </div><br>
+            <button type="submit" class="btn btn-primary">Zarejestruj</button>
         </form>
-        <a class="btn btn-outline-primary" href="{{route('dashboard')}}">Pokaż wszystkich</a>
-        <a class="btn btn-outline-success" href="{{route('addEmployee')}}">Dodaj pracownika</a>
-
     </div>
 
-    <div class="container-sm" style="height: 400px; overflow: auto; padding-top: 15px; text-align: center">
-        <table id="myTable" class="table table-striped table-bordered table-sm">
-            <thead>
-            <tr>
-                <th class="th-sm" onclick="sortTable(0)">Imię</th>
-                <th class="th-sm" onclick="sortTable(1)">Email</th>
-                <th class="th-sm" onclick="sortTable(2)">Nr. telefonu</th>
-                <>
-                <th class="th-sm">Działania</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($employees as $employee)
-                <tr>
-                    <td>{{$employee->name}}</td>
-                    <td>{{$employee->email}}</td>
-                    <td>{{$employee->phone}}</td>
-
-                    <td>Edytuj</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    </div>
-
-
-    <script>
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("myTable");
-            switching = true;
-            dir = "asc";
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    switchcount++;
-                } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
-                }
-            }
-        }
-    </script>
 @endsection

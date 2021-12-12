@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', [Controller::class, 'index'])->name('dashboard');
+
+Route::get('/dashboard/find', [Controller::class, 'show']);
+
+Route::get('/dashboard/addEmployee', function (){
+    return view('addEmployee');
+})->name('addEmployee');
+
+Route::post('/dashboard/addEmployee', [Controller::class, 'addEmployee']);
