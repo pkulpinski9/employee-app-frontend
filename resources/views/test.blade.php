@@ -20,14 +20,15 @@
 
     </div>
 
-    <div class="container-sm" style="height: 400px; overflow: auto; padding-top: 15px; text-align: center">
+    <div class="container-lg" style="height: 400px; overflow: auto; padding-top: 15px; text-align: center">
         <table id="myTable" class="table table-striped table-bordered table-sm">
             <thead>
             <tr>
                 <th class="th-sm" onclick="sortTable(0)">Imię</th>
                 <th class="th-sm" onclick="sortTable(1)">Email</th>
                 <th class="th-sm" onclick="sortTable(2)">Nr. telefonu</th>
-                <>
+                <th class="th-sm" onclick="sortTable(2)">Data przyjęcia</th>
+                <th class="th-sm" onclick="sortTable(2)">Pensja</th>
                 <th class="th-sm">Działania</th>
             </tr>
             </thead>
@@ -37,8 +38,16 @@
                     <td>{{$employee->name}}</td>
                     <td>{{$employee->email}}</td>
                     <td>{{$employee->phone}}</td>
-
-                    <td>Edytuj</td>
+                    <td>{{$employee->hire_date}}</td>
+                    <td>{{($employee->salary)/100}} zł</td>
+                    <td><a class="btn btn-sm btn-outline-warning" href="{{route('addEmployee')}}">Edytuj</a>
+                        <form method="POST" action="/dashboard/deleteEmployee" style="display: inline-block">
+                            @method('DELETE')
+                            @csrf
+                            <input type="hidden" name="employee_id" value="{{$employee->id}}">
+                            <button class="btn btn-sm btn-outline-danger" type="sumbit">Usuń</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

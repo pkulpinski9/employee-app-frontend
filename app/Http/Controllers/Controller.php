@@ -55,7 +55,7 @@ class Controller extends BaseController
     public function addEmployee(Request $request)
     {
         $client = new Client();
-        $res = $client->request('POST', 'http://127.0.0.1:8080/api/employee', [
+        $client->request('POST', 'http://127.0.0.1:8080/api/employee', [
             'json' => [
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
@@ -65,6 +65,13 @@ class Controller extends BaseController
                 'hire_date' => Carbon::now()->toDateTimeString()
             ]
         ]);
+
+        return redirect()->route('dashboard');
+    }
+
+    public function deleteEmployee(Request $request){
+        $client = new Client();
+        $client->delete('http://127.0.0.1:8080/api/employee/' . $request->input('employee_id'));
 
         return redirect()->route('dashboard');
     }

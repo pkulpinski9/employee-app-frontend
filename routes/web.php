@@ -27,3 +27,5 @@ Route::get('/dashboard/addEmployee', function (){
 })->name('addEmployee');
 
 Route::post('/dashboard/addEmployee', [Controller::class, 'addEmployee']);
+
+Route::delete('/dashboard/deleteEmployee', [Controller::class, 'deleteEmployee']);
