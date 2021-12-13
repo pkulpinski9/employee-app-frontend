@@ -20,15 +20,15 @@
 
     </div>
 
-    <div class="container-lg" style="height: 400px; overflow: auto; padding-top: 15px; text-align: center">
+    <div class="container-lg" style="height: 700px; overflow: auto;padding-top: 15px; text-align: center">
         <table id="myTable" class="table table-striped table-bordered table-sm">
             <thead>
             <tr>
-                <th class="th-sm" onclick="sortTable(0)">Imię</th>
+                <th class="th-sm " onclick="sortTable(0)">Imię</th>
                 <th class="th-sm" onclick="sortTable(1)">Email</th>
                 <th class="th-sm" onclick="sortTable(2)">Nr. telefonu</th>
-                <th class="th-sm" onclick="sortTable(2)">Data przyjęcia</th>
-                <th class="th-sm" onclick="sortTable(2)">Pensja</th>
+                <th class="th-sm" onclick="sortTable(3)">Data przyjęcia</th>
+                <th class="th-sm" onclick="sortTable(4)">Pensja</th>
                 <th class="th-sm">Działania</th>
             </tr>
             </thead>
