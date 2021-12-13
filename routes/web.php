@@ -14,11 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', [Controller::class, 'index'])->name('dashboard');
+Route::get('/', [Controller::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard/find', [Controller::class, 'show']);
 
