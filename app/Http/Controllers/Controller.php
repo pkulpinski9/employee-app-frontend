@@ -72,6 +72,33 @@ class Controller extends BaseController
     public function deleteEmployee(Request $request){
         $client = new Client();
         $client->delete('http://127.0.0.1:8080/api/employee/' . $request->input('employee_id'));
+        return redirect()->route('dashboard');
+    }
+
+    public function showEdit($user_id){
+        $client = new Client();
+        $res = $client->request('GET', 'http://127.0.0.1:8080/api/employee/' . $user_id);
+        $json = $res->getBody()->getContents();
+
+        $object = (object)json_decode($json);
+
+        $employees = EmployeeResource::make($object);
+        return view('editEmployee', [
+            'employee' => $employees
+        ]);
+    }
+
+    public function editEmployee(Request $request){
+        $client = new Client();
+        $client->request('PUT', 'http://127.0.0.1:8080/api/employee/' . $request->input('employee_id'), [
+            'json' => [
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'phone' => $request->input('phone'),
+                'salary' => $request->input('salary'),
+                'gender' => $request->input('gender')
+            ]
+        ]);
 
         return redirect()->route('dashboard');
     }

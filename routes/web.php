@@ -29,3 +29,7 @@ Route::get('/dashboard/addEmployee', function (){
 Route::post('/dashboard/addEmployee', [Controller::class, 'addEmployee']);
 
 Route::delete('/dashboard/deleteEmployee', [Controller::class, 'deleteEmployee']);
+
+Route::get('/dashboard/editEmployee/{user_id}', [Controller::class, 'showEdit'])->name('editEmployee');
+
+Route::put('/dashboard/editEmployee', [Controller::class, 'editEmployee']);

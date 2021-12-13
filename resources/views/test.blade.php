@@ -40,7 +40,7 @@
                     <td>{{$employee->phone}}</td>
                     <td>{{$employee->hire_date}}</td>
                     <td>{{($employee->salary)/100}} zł</td>
-                    <td><a class="btn btn-sm btn-outline-warning" href="{{route('addEmployee')}}">Edytuj</a>
+                    <td><a class="btn btn-sm btn-outline-warning" href="{{route('editEmployee', ['user_id' => $employee->id])}}">Edytuj</a>
                         <form method="POST" action="/dashboard/deleteEmployee" style="display: inline-block">
                             @method('DELETE')
                             @csrf
