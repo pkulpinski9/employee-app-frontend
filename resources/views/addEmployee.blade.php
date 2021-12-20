@@ -1,11 +1,12 @@
 @extends('template')
 
 @section('main-content')
-    <div class="container-fluid" style="width: 100%">
+    <div class="container-fluid" style="width: 100%" onload="myFunction()">
         <header class="d-flex justify-content-center py-3 bg-dark">
             <h2 class="text-white">Dodaj pracownika</h2>
         </header>
     </div>
+
     <div class="container-lg" style="padding-top: 15px">
         <form method="POST" action="/dashboard/addEmployee">
             @method('POST')
@@ -20,11 +21,11 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputAddress">Numer telefonu</label>
-                <input type="number" name="phone" class="form-control" required>
+                <input type="tel" name="phone" minlength="11" maxlength="11" class="form-control" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputAddress">Pensja</label>
-                <input type="number" name="salary" class="form-control" required>
+                <input type="number" name="salary" min="3200" max="1000000" step="0.01" class="form-control" required>
             </div>
             <label>Płec</label><br>
             <div class="form-check form-check-inline">
@@ -33,10 +34,16 @@
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="gender" value="F" required>
-                <label class="form-check-label" for="inlineRadio2">Inne</label>
+                <label class="form-check-label" for="inlineRadio2">Kobieta</label>
             </div><br>
             <button type="submit" class="btn btn-primary">Zarejestruj</button>
         </form>
     </div>
+
+    <script>
+
+
+
+    </script>
 
 @endsection

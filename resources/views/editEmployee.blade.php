@@ -21,14 +21,14 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputAddress">Numer telefonu</label>
-                <input type="number" name="phone" class="form-control" value="{{$employee->phone}}" required>
+                <input type="number" name="phone" min="10000000000" max="99999999999" class="form-control" value="{{$employee->phone}}" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputAddress">Pensja (podana w groszach!)</label>
-                <input type="number" name="salary" class="form-control" value="{{$employee->salary}}" required>
+                <label for="inputAddress">Pensja</label>
+                <input type="number" name="salary" min="3200" max="1000000" step="0.01" class="form-control" value="{{$employee->salary}}" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputAddress">Data przyjęcia</label>
+                <label for="inputAddress">Data zatrudnienia</label>
                 <input type="text" name="salary" class="form-control" value="{{$employee->hire_date}}" disabled>
             </div>
             <label>Płec</label><br>
@@ -38,10 +38,11 @@
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="gender" value="F" required @if($employee->gender == 'F') checked @endif>
-                <label class="form-check-label" for="inlineRadio2">Inne</label>
+                <label class="form-check-label" for="inlineRadio2">Kobieta</label>
             </div><br>
             <button type="submit" class="btn btn-primary">Edytuj</button>
         </form>
     </div>
+
 
 @endsection

@@ -39,7 +39,7 @@
                     <td>{{$employee->email}}</td>
                     <td>{{$employee->phone}}</td>
                     <td>{{$employee->hire_date}}</td>
-                    <td>{{($employee->salary)/100}} zł</td>
+                    <td>{{$employee->salary}} zł</td>
                     <td><a class="btn btn-sm btn-outline-warning" href="{{route('editEmployee', ['user_id' => $employee->id])}}">Edytuj</a>
                         <form method="POST" action="/dashboard/deleteEmployee" style="display: inline-block">
                             @method('DELETE')
@@ -53,7 +53,6 @@
             </tbody>
         </table>
     </div>
-
 
     <script>
         function sortTable(n) {
